@@ -1,0 +1,30 @@
+{% extends "users/base.html" %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Все опросы</h3>
+            </div>
+                
+            <ul class="list-group">
+                {% for poll in all_polls_list %}
+                <li class="list-group-item">
+<!--                    <strong>{{ poll.title }}</strong>-->
+                    <a class="mr-2" href="{% url 'polls:poll_details' poll.id %}"><strong>{{ poll.title }}</strong></a>
+                    <span class="pull-right">
+                        <a href="#" class="btn btn-info btn-xs">Пройти</a> &nbsp;
+
+                    </span>
+
+                </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

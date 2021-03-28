@@ -1,0 +1,32 @@
+{% extends "users/base.html" %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{poll.title}}</h3>
+            </div>
+            <ul class="list-group">
+                {% for question in poll.questions.all %}
+
+                <li class="list-group-item">
+                    <strong>{{ question.question_text }}</strong>
+                    <span class="pull-right">
+                        {% if question in answered %}
+                            <a href="#" class="btn btn-success btn-xs">Смотреть ответ</a> &nbsp;
+                        {% else %}
+                        <a href="#" class="btn btn-info btn-xs">Ответить</a> &nbsp;
+                        {% endif %}
+
+                    </span>
+                </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
